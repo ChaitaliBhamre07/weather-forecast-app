@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyCast | Weather Forecast App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="theme-light weather-clear">
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+
+    <main class="app-shell">
+      <section class="hero-panel glass-card">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Placement Portfolio Project</p>
+            <h1>SkyCast Weather Forecast</h1>
+            <p class="hero-copy">
+              Real-time weather insights, 5-day forecast, saved searches, and a
+              responsive UI powered by OpenWeatherMap.
+            </p>
+          </div>
+
+          <div class="toggle-group">
+            <button id="themeToggle" class="chip-button" type="button">
+              Toggle Theme
+            </button>
+            <button id="unitToggle" class="chip-button" type="button">
+              Switch to °F
+            </button>
+          </div>
+        </div>
+
+        <form id="searchForm" class="search-bar">
+          <input
+            id="cityInput"
+            name="city"
+            type="text"
+            placeholder="Search city name..."
+            aria-label="Search city name"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="primary-button">Search</button>
+          <button id="locationButton" type="button" class="secondary-button">
+            Use My Location
+          </button>
+        </form>
+
+        <div class="saved-cities-row">
+          <span>Saved cities:</span>
+          <div id="savedCities" class="saved-city-list"></div>
+        </div>
+      </section>
+
+      <section class="status-panel">
+        <div id="loader" class="loader hidden" aria-live="polite"></div>
+        <p id="errorMessage" class="error-message hidden" role="alert"></p>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="weather-card featured-card glass-card">
+          <div class="featured-header">
+            <div>
+              <p id="locationLabel" class="location-label">Search for a city</p>
+              <h2 id="temperatureValue">--°</h2>
+              <p id="conditionLabel" class="condition-label">
+                Weather details will appear here.
+              </p>
+            </div>
+            <img
+              id="weatherIcon"
+              class="weather-icon hidden"
+              alt="Current weather icon"
+            />
+          </div>
+
+          <div class="featured-meta">
+            <div class="mini-stat">
+              <span>Feels Like</span>
+              <strong id="feelsLikeValue">--</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Humidity</span>
+              <strong id="humidityValue">--</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Wind</span>
+              <strong id="windValue">--</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Updated</span>
+              <strong id="updatedAtValue">--</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="weather-card glass-card">
+          <h3>Today's Highlights</h3>
+          <div class="details-grid">
+            <div class="detail-item">
+              <span>Min / Max</span>
+              <strong id="minMaxValue">--</strong>
+            </div>
+            <div class="detail-item">
+              <span>Pressure</span>
+              <strong id="pressureValue">--</strong>
+            </div>
+            <div class="detail-item">
+              <span>Sunrise</span>
+              <strong id="sunriseValue">--</strong>
+            </div>
+            <div class="detail-item">
+              <span>Sunset</span>
+              <strong id="sunsetValue">--</strong>
+            </div>
+            <div class="detail-item">
+              <span>Visibility</span>
+              <strong id="visibilityValue">--</strong>
+            </div>
+            <div class="detail-item">
+              <span>Coordinates</span>
+              <strong id="coordinatesValue">--</strong>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="forecast-section glass-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Extended Outlook</p>
+            <h3>5-Day Forecast</h3>
+          </div>
+        </div>
+        <div id="forecastGrid" class="forecast-grid"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
