@@ -1,106 +1,208 @@
-# Weather Forecast Web Application
+# SkyCast Weather Forecast App
 
-A full-stack weather forecast application built with Node.js, Express, HTML, CSS, and JavaScript. It fetches real-time weather and 5-day forecast data from the OpenWeatherMap API and presents it in a modern, responsive dashboard.
+A full-stack weather forecast web application built with `Node.js`, `Express`, `HTML`, `CSS`, and `JavaScript`. The app uses the `OpenWeatherMap API` to fetch real-time weather data and a 5-day forecast, then displays it in a clean, responsive portfolio-ready interface.
+
+## Overview
+
+This project was built to demonstrate:
+
+- Frontend and backend integration
+- Real-time API consumption
+- Secure API key handling with environment variables
+- Responsive UI design
+- Error handling and loading states
+- Browser features like geolocation and local storage
+
+## Features
+
+### Core Features
+
+- Search weather by city name
+- Display temperature, weather condition, humidity, and wind speed
+- Show loading spinner while data is being fetched
+- Handle invalid city names and API failures gracefully
+- Responsive layout for desktop and mobile
+
+### Advanced Features
+
+- 5-day weather forecast
+- Detect current location using Geolocation API
+- Save recently searched cities using `localStorage`
+- Dark and light mode toggle
+- Celsius and Fahrenheit unit toggle
+- Weather icons from OpenWeatherMap
+- Dynamic background based on current weather
+- Extra details like feels like temperature, sunrise, sunset, pressure, and visibility
+
+## Tech Stack
+
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
+
+- Node.js
+- Express.js
+
+### API
+
+- OpenWeatherMap API
 
 ## Folder Structure
 
 ```text
 weather-forecast-app/
-├── client/
-│   ├── app.js
-│   ├── index.html
-│   └── styles.css
-├── server/
-│   ├── index.js
-│   └── services/
-│       └── openWeather.js
-├── .env.example
-├── .gitignore
-├── package.json
-└── README.md
+|-- client/
+|   |-- app.js
+|   |-- index.html
+|   `-- styles.css
+|-- server/
+|   |-- index.js
+|   `-- services/
+|       `-- openWeather.js
+|-- .env.example
+|-- .gitignore
+|-- package-lock.json
+|-- package.json
+`-- README.md
 ```
 
-## Features
+## API Routes
 
-- Search weather by city name
-- Real-time temperature, feels like, humidity, wind speed, pressure, sunrise, and sunset
-- 5-day forecast cards
-- Geolocation-based weather lookup
-- Loading spinner and clear error messages
-- Responsive mobile and desktop layout
-- Dark and light mode toggle
-- Celsius and Fahrenheit unit toggle
-- Saved recent cities using `localStorage`
-- Dynamic backgrounds and weather icons based on current conditions
+### `GET /weather`
 
-## Backend API
+Fetch current weather data.
 
-### `GET /weather?city=London`
+Query parameters:
 
-Returns cleaned current weather data for a city.
+- `city=London`
+- or `lat=19.07&lon=72.87`
+- optional `units=metric`
+- optional `units=imperial`
 
-You can also pass coordinates:
+Example:
 
-### `GET /weather?lat=19.07&lon=72.87`
+```http
+GET /weather?city=Mumbai&units=metric
+```
 
-### `GET /forecast?city=London`
+### `GET /forecast`
 
-Returns a cleaned 5-day forecast response.
+Fetch 5-day forecast data.
 
-You can also pass coordinates:
+Query parameters:
 
-### `GET /forecast?lat=19.07&lon=72.87`
+- `city=London`
+- or `lat=19.07&lon=72.87`
+- optional `units=metric`
+- optional `units=imperial`
 
-Optional query parameter for both routes:
+Example:
 
-- `units=metric`
-- `units=imperial`
+```http
+GET /forecast?city=Delhi&units=metric
+```
 
-## OpenWeatherMap Integration
+## How API Integration Works
 
-- The frontend never calls OpenWeatherMap directly.
-- The backend reads the API key from `.env`.
-- The backend fetches data from OpenWeatherMap and sends only the fields needed by the UI.
-- This keeps the API key hidden and makes frontend code cleaner.
+- The frontend sends requests to the Express backend.
+- The backend calls the OpenWeatherMap API.
+- The API key stays hidden in the `.env` file.
+- The backend returns cleaned JSON responses to the frontend.
+- This structure is safer and easier to maintain than calling the weather API directly from the browser.
 
-## Setup Steps
+## Installation and Setup
 
-1. Open a terminal in the project folder.
-2. Install dependencies:
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd weather-forecast-app
+```
+
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-3. Create a `.env` file in the project root and copy the example values:
+### 3. Create environment variables
+
+Create a `.env` file in the root folder and add:
 
 ```env
 OPENWEATHER_API_KEY=your_openweathermap_api_key
 PORT=5000
 ```
 
-4. Start the development server:
+You can copy values from `.env.example`.
+
+### 4. Start the project
+
+For development:
 
 ```bash
 npm run dev
 ```
 
-5. Open your browser and visit:
+For normal start:
+
+```bash
+npm start
+```
+
+### 5. Open in browser
 
 ```text
 http://localhost:5000
 ```
 
-## Important Notes
+## Requirements
 
-- Use Node.js 18 or later because the project uses the built-in `fetch` API on the server.
-- You need a valid OpenWeatherMap API key from [OpenWeatherMap](https://openweathermap.org/api).
-- If the API key is missing or the city name is invalid, the app shows a friendly error message.
+- Node.js `18+`
+- npm
+- OpenWeatherMap API key
 
-## Why This Is Good for a Portfolio
+Get your API key from [OpenWeatherMap](https://openweathermap.org/api).
 
-- Demonstrates frontend and backend integration
+## Screens and Functionality
+
+- Search bar at the top for city-based weather search
+- Main weather card for current conditions
+- Highlights card for extra weather details
+- Forecast section for 5-day outlook
+- Theme switcher and unit switcher
+- Saved cities for quick access
+
+## Error Handling
+
+The application handles:
+
+- Invalid city names
+- Missing API key
+- Weather API request failures
+- Geolocation permission denial
+
+## Why This Project Is Good for Placement Portfolio
+
+- Shows strong understanding of REST API integration
+- Demonstrates frontend and backend separation
 - Uses environment variables securely
-- Shows async API handling and error management
-- Includes practical browser APIs like geolocation and local storage
-- Has a polished, responsive UI with interaction states
+- Includes user-friendly design and interaction features
+- Covers practical browser APIs and asynchronous JavaScript
+- Has a beginner-friendly and readable code structure
+
+## Future Improvements
+
+- Add hourly forecast
+- Add search suggestions
+- Store saved cities in a database
+- Add weather charts
+- Deploy to Render, Railway, or Vercel
+
+## Author
+
+Built as a portfolio project to showcase full-stack web development and API integration skills.
