@@ -1,5 +1,7 @@
 # SkyCast Weather Forecast App
 
+Live Repository: https://github.com/ChaitaliBhamre07/weather-forecast-app
+
 A full-stack weather forecast web application built with `Node.js`, `Express`, `HTML`, `CSS`, and `JavaScript`. The app uses the `OpenWeatherMap API` to fetch real-time weather data and a 5-day forecast, then displays it in a clean, responsive portfolio-ready interface.
 
 ## Overview
@@ -194,6 +196,14 @@ The application handles:
 - Includes user-friendly design and interaction features
 - Covers practical browser APIs and asynchronous JavaScript
 - Has a beginner-friendly and readable code structure
+
+## My Contribution
+
+- Designed and implemented frontend UI
+- Integrated backend with OpenWeatherMap API
+- Handled API responses and error cases
+- Implemented features like geolocation, dark mode, and local storage
+- Managed project structure and deployment setup
 
 ## Future Improvements
 
